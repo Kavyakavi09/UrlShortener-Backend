@@ -124,7 +124,7 @@ export const signin = async (req, res) => {
         );
         if (isPasswordMatch) {
           let token = jwt.sign(
-            { name: user.name, id: user._id },
+            { name: user.firstname, id: user._id },
             process.env.SECRET_KEY
           );
           res.json({ msg: 'successfully logged in', token: token, user: user });
@@ -185,7 +185,7 @@ export const forgetPassword = async (req, res) => {
     if (isUserExist) {
       const randomString = randomstring.generate();
       let token_pass = jwt.sign(
-        { name: isUserExist.name, id: isUserExist._id },
+        { name: isUserExist.firstname, id: isUserExist._id },
         randomString,
         {
           expiresIn: '15m',
@@ -195,7 +195,7 @@ export const forgetPassword = async (req, res) => {
         { email: req.body.email },
         { $set: { token: token_pass } }
       );
-      resetPasswordMail(isUserExist.name, isUserExist.email, token_pass);
+      resetPasswordMail(isUserExist.firstname, isUserExist.email, token_pass);
       res.status(200).json({
         message: 'Please check your inbox of email and reset your password',
       });
