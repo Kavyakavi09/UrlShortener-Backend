@@ -8,10 +8,6 @@ import {
 } from '../controller/auth.js';
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.status(200).json('Welcome to My App');
-});
-
 router.post('/signup', signup);
 
 router.post('/account-activate/:token', accountActivate);
