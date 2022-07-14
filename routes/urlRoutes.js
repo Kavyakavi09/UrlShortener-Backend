@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
   res.status(200).json('Welcome to My App😊');
 });
 
-router.get('/shortUrl', auth, getUrl);
+router.get('/shortUrl', getUrl);
 
-router.post('/createUrl', auth, createUrl);
+router.post('/createUrl', createUrl);
 
 router.get('/:shortUrl', redirectUrl);
 
