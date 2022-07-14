@@ -11,6 +11,6 @@ router.get('/shortUrl', auth, getUrl);
 
 router.post('/createUrl', auth, createUrl);
 
-router.get('/:shortUrl', auth, redirectUrl);
+router.get('/:shortUrl', redirectUrl);
 
 export const urlRoutes = router;
