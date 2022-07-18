@@ -31,7 +31,7 @@ export const accountActivateMail = async (name, email, token) => {
       html:
         '<p> Hi ' +
         name +
-        ', Please click <a href="https://password-reset-project.netlify.app/#/reset-password/' +
+        ', Please click <a href="https://shortly-url-shortener-app.netlify.app/#/sign-up/' +
         token +
         '"> here </a> to activate your account.The link will be expired in 15 minutes.</p>',
     };
@@ -161,7 +161,7 @@ export const resetPasswordMail = async (name, email, token) => {
       html:
         '<p> Hi ' +
         name +
-        ', Please click <a href="https://password-reset-project.netlify.app/#/reset-password/' +
+        ', Please click <a href="https://shortly-url-shortener-app.netlify.app/#/reset-password/' +
         token +
         '"> here </a> to reset your password.The link will be expired in 15 minutes.</p>',
     };
