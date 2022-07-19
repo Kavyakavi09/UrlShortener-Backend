@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const auth = (req, res, next) => {
   const token = req.header('Authorization');
-  if (token) {
+  if (token === !'') {
     let decode = jwt.verify(token, process.env.SECRET_KEY);
     if (decode) {
       req.userId = decode.id;
