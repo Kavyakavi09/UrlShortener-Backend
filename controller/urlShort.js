@@ -21,7 +21,6 @@ export const getUrl = (req, res) => {
 // To create urls
 export const createUrl = (req, res) => {
   try {
-    req.body.createdBy = req.userId;
     let urlShort = new urlShortDetails(req.body);
     urlShort.save((err, data) => {
       if (err) {
