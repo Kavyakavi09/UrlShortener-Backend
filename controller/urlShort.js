@@ -3,7 +3,7 @@ import urlShortDetails from '../models/urlShort.js';
 // To get all urls
 export const getUrl = (req, res) => {
   try {
-    urlShortDetails.find((err, data) => {
+    urlShortDetails.find({ createdBy: req.userId }, (err, data) => {
       if (err) {
         return res
           .status(403)
