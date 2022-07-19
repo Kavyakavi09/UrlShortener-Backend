@@ -59,3 +59,19 @@ export const redirectUrl = (req, res) => {
     console.log('something went wrong', error);
   }
 };
+
+export const delUrl = (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    urlShortDetails.deleteOne({ _id: id }, (err, data) => {
+      if (err) throw err;
+      return res
+        .status(200)
+        .json({ message: 'Url deleted successfully', data: data });
+    });
+  } catch (error) {
+    res.status(500).send('Internal server error');
+    console.log('something went wrong', error);
+  }
+};
