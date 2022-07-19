@@ -48,7 +48,6 @@ export const redirectUrl = (req, res) => {
       urlShortDetails.findByIdAndUpdate(
         { _id: data._id },
         { $inc: { clickCount: 1 } },
-        { new: true },
         (err) => {
           if (err) throw err;
           res.redirect(data.longUrl);
