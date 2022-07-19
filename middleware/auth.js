@@ -5,6 +5,7 @@ const auth = (req, res, next) => {
   if (token) {
     let decode = jwt.verify(token, process.env.SECRET_KEY);
     if (decode) {
+      req.userId = decode.id;
       next();
     } else {
       return res.status(401).json({ message: 'Unauthorized' });

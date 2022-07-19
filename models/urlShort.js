@@ -18,6 +18,10 @@ const urlSchema = new Schema(
       required: true,
       default: 0,
     },
+    createdBy: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
