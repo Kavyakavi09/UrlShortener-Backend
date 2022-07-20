@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.get('/shortUrl', auth, getUrl);
 
-router.get('/views', auth, viewsUrl);
+router.get('/views', viewsUrl);
 
 router.post('/createUrl', auth, createUrl);
 
