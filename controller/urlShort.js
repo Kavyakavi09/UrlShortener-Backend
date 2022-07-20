@@ -1,6 +1,6 @@
 import urlShortDetails from '../models/urlShort.js';
 
-// To get all urls
+// To get all urls of the particular user
 export const getUrl = (req, res) => {
   try {
     urlShortDetails.find({ createdBy: req.userId }, (err, data) => {
@@ -60,6 +60,7 @@ export const redirectUrl = (req, res) => {
   }
 };
 
+// to delete the url
 export const delUrl = (req, res) => {
   try {
     const { id } = req.params;
@@ -70,6 +71,37 @@ export const delUrl = (req, res) => {
         .status(200)
         .json({ message: 'Url deleted successfully', data: data });
     });
+  } catch (error) {
+    res.status(500).send('Internal server error');
+    console.log('something went wrong', error);
+  }
+};
+
+// To find the totalviews
+
+export const viewsUrl = (req, res) => {
+  try {
+    urlShortDetails.aggregate(
+      [
+        { $match: { createdBy: req.userId } },
+        {
+          $group: {
+            _id: { createdBy: '$createdBy' },
+            totalViews: { $sum: '$clickCount' },
+            count: { $sum: 1 },
+          },
+        },
+      ],
+      (err, data) => {
+        if (err) {
+          return res
+            .status(403)
+            .json('An error accured while getting urldetails');
+        } else {
+          res.status(200).json(data);
+        }
+      }
+    );
   } catch (error) {
     res.status(500).send('Internal server error');
     console.log('something went wrong', error);
