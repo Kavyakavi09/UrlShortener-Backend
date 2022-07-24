@@ -9,7 +9,12 @@ import { urlRoutes } from './routes/urlRoutes.js';
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://shortly-url-shortener-app.netlify.app/',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 // dotenv environment setup
 dotenv.config();
