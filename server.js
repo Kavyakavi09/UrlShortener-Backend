@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://shortly-url-shortener-app.netlify.app/',
-  credentials: true, //access-control-allow-credentials:true
+  origin: '*',
+  credentials: true,
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
